@@ -154,7 +154,7 @@
             // 
             // bttExportarTickets
             // 
-            this.bttExportarTickets.Location = new System.Drawing.Point(602, 151);
+            this.bttExportarTickets.Location = new System.Drawing.Point(617, 140);
             this.bttExportarTickets.Name = "bttExportarTickets";
             this.bttExportarTickets.Size = new System.Drawing.Size(153, 71);
             this.bttExportarTickets.TabIndex = 13;
@@ -177,7 +177,7 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(579, 239);
+            this.listBox1.Location = new System.Drawing.Point(579, 217);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(209, 199);
             this.listBox1.TabIndex = 15;

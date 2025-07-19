@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,18 +8,20 @@ using System.Threading.Tasks;
 namespace Prog2FinalPracticaTallerBicicleta
 {
     [Serializable]
-    internal class Ticket
+    internal class Ticket:IExportable
     {
         Cliente unCliente;
         List<Servicio> listaServicios = new List<Servicio>();
         static int nroOrden;
         DateTime fechaHora;
+        public int nro;
 
         public Ticket(string nombre, long cuit) 
         {
             unCliente = new Cliente(cuit, nombre);
             fechaHora = DateTime.Now;
-            
+            nroOrden++;
+            nro = nroOrden;
         }
         public void AgregarServicio(Servicio tarea)
         {
@@ -56,7 +59,17 @@ namespace Prog2FinalPracticaTallerBicicleta
 
         public override string ToString()
         {
-            return nroOrden+" "+unCliente.ToString()+" "+fechaHora.ToString()+" "+PrecioFinal();
+            return nro+";"+unCliente.ToString()+";"+fechaHora.ToString()+";" +PrecioFinal();
+        }
+
+        public void Leer(string path)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Escribir()
+        {
+            return $"{ToString()}"; 
         }
     }
 }

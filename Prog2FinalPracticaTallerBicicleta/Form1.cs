@@ -140,6 +140,7 @@ namespace Prog2FinalPracticaTallerBicicleta
             try
             {
                 MessageBox.Show("El precio final es: "+sisteTicket.PrecioFinal());
+                MessageBox.Show("" + sisteTicket.ToString());
                 listaTickets.Push(sisteTicket);
             }
             catch (Exception)
@@ -169,7 +170,46 @@ namespace Prog2FinalPracticaTallerBicicleta
 
         private void bttExportarTickets_Click(object sender, EventArgs e)
         {
+            saveFileDialog1.Title = "Exportar Tickets";
+            saveFileDialog1.Filter = "listaTickets csv|*.csv";
 
+            if (saveFileDialog1.ShowDialog()==DialogResult.OK)
+            {
+                FileStream fs= null;
+                StreamWriter sw=null;
+                string path = saveFileDialog1.FileName;
+                try
+                {
+                    fs = new FileStream(path, FileMode.CreateNew, FileAccess.Write);
+                    sw = new StreamWriter(fs);
+
+
+                    string linea = $"nro;cuit,nombrecliente;fechahora;monto";
+                    sw.WriteLine(linea);
+
+                    foreach (Ticket item in listaTickets.ToList())
+                    {
+                      sw.WriteLine(item.Escribir());
+                    }
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+
+                finally 
+                {
+                    if (fs!=null)
+                    {
+                        if (sw!=null)
+                        {
+                            sw.Close();
+                            fs.Close();
+                        }
+                    }
+                }
+            }
         }
 
         private void bttImporarServicios_Click(object sender, EventArgs e)
@@ -201,14 +241,21 @@ namespace Prog2FinalPracticaTallerBicicleta
                         Mantenimiento m =  new Mantenimiento();
 
                         m.Leer(linea);
-
-                        listaServicios.Add(m);
-                        listBox1.Items.Add(m);
+                        if (m.tipo=="M")
+                        {
+                            listaServicios.Add(m);
+                            listBox1.Items.Add(m);
+                        }
+                        
 
                         Reparacion r = new Reparacion();
                         r.Leer(linea);
-                        listBox1.Items.Add(r);
-                        listaServicios.Add(r);
+                        if (r.tipo=="R")
+                        {
+                            listBox1.Items.Add(r);
+                            listaServicios.Add(r);
+                        }
+                       
 
                     }
                   

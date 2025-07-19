@@ -10,7 +10,7 @@ namespace Prog2FinalPracticaTallerBicicleta
     internal class Mantenimiento:Servicio,IExportable
     {
         private double extra=0;
-        public string tipo {  get; set; }
+        
         public Mantenimiento(int cod, string descripcion, double precioB ) /*: base(descripcion, precioB, cod)*/
         {
             this.NroCod = cod;

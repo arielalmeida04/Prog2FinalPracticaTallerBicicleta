@@ -10,7 +10,7 @@ namespace Prog2FinalPracticaTallerBicicleta
     [Serializable]
     internal class Reparacion : Servicio, IExportable
     {
-        public string tipo { get; set; }
+        
         public double PrecioRepuesto { get; set; }
         public double horas { get; set; }
 
