@@ -263,10 +263,10 @@ namespace Prog2FinalPracticaTallerBicicleta
 
                 }
 
-                catch (Exception)
+                catch (Exception z)
                 {
 
-                    throw;
+                    MessageBox.Show(z.Message);
                 }
 
                 finally
